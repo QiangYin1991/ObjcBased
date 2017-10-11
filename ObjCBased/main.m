@@ -51,6 +51,75 @@ NSString *colorName(ShapeColor color)
     return @"no Color";
 }
 
+// the interface of Base Shape
+@interface ShapeBase: NSObject
+{
+    ShapeColor fillColor;
+    ShapeRect bounds;
+}
+
+- (void) setFillColor: (ShapeColor) color;
+- (void) setBounds: (ShapeRect) bs;
+- (void) draw;
+
+@end
+
+@implementation ShapeBase
+
+- (void) setFillColor:(ShapeColor)color
+{
+    fillColor = color;
+}   // setFillColor
+
+- (void) setBounds:(ShapeRect)bs
+{
+    bounds = bs;
+}   // setBounds
+
+- (void) draw
+{
+    
+}
+
+@end    // shapebase
+
+// the interface of Class Circle
+@interface Circle: ShapeBase
+@end    // circle
+
+@implementation Circle
+
+- (void) draw
+{
+    NSLog(@"draw a circle at ( %d %d %d %d ) in %@", bounds.x, bounds.y, bounds.width, bounds.height, colorName(fillColor));
+}   // draw
+
+@end    // Circle implementation
+
+// the interface of Class Rectangle
+@interface Rectangle: ShapeBase
+@end    //Rectangle interface
+
+@implementation Rectangle
+
+- (void) draw
+{
+    NSLog(@"draw a Rectangle at ( %d %d %d %d ) in %@", bounds.x, bounds.y, bounds.width, bounds.height, colorName(fillColor));
+}
+@end    // Rectangle implementation
+
+// the interface of Class Circle
+@interface OlateSpheroid: ShapeBase
+@end
+
+@implementation OlateSpheroid
+
+- (void) draw
+{
+    NSLog(@"draw a circle at ( %d %d %d %d ) in %@", bounds.x, bounds.y, bounds.width, bounds.height, colorName(fillColor));
+}
+@end    // OlateSpheroid
+
 void drawShapes(id shapes[], int count)
 {
     for (int i = 0; i < count; ++i) {
@@ -58,99 +127,6 @@ void drawShapes(id shapes[], int count)
         [shape draw];
     }
 }
-
-// the interface of Class Circle
-@interface Circle: NSObject
-{
-    ShapeColor fillColor;
-    ShapeRect bounds;
-}
-
-- (void) setFillColor: (ShapeColor) color;
-- (void) setBounds: (ShapeRect) bs;
-- (void) draw;
-
-@end
-
-@implementation Circle
-
-- (void) setFillColor:(ShapeColor)color
-{
-    fillColor = color;
-}   // setFillColor
-
-- (void) setBounds:(ShapeRect)bs
-{
-    bounds = bs;
-}   // setBounds
-
-- (void) draw
-{
-    NSLog(@"draw a circle at ( %d %d %d %d ) in %@", bounds.x, bounds.y, bounds.width, bounds.height, colorName(fillColor));
-}
-@end    // circle
-
-// the interface of Class Rectangle
-@interface Rectangle: NSObject
-{
-    ShapeColor fillColor;
-    ShapeRect bounds;
-}
-
-- (void) setFillColor: (ShapeColor) color;
-- (void) setBounds: (ShapeRect) bs;
-- (void) draw;
-
-@end
-
-@implementation Rectangle
-
-- (void) setFillColor:(ShapeColor)color
-{
-    fillColor = color;
-}   // setFillColor
-
-- (void) setBounds:(ShapeRect)bs
-{
-    bounds = bs;
-}   // setBounds
-
-- (void) draw
-{
-    NSLog(@"draw a Rectangle at ( %d %d %d %d ) in %@", bounds.x, bounds.y, bounds.width, bounds.height, colorName(fillColor));
-}
-@end    // Rectangle
-
-// the interface of Class Circle
-@interface OlateSpheroid: NSObject
-{
-    ShapeColor fillColor;
-    ShapeRect bounds;
-}
-
-- (void) setFillColor: (ShapeColor) color;
-- (void) setBounds: (ShapeRect) bs;
-- (void) draw;
-
-@end
-
-@implementation OlateSpheroid
-
-- (void) setFillColor:(ShapeColor)color
-{
-    fillColor = color;
-}   // setFillColor
-
-- (void) setBounds:(ShapeRect)bs
-{
-    bounds = bs;
-}   // setBounds
-
-- (void) draw
-{
-    NSLog(@"draw a circle at ( %d %d %d %d ) in %@", bounds.x, bounds.y, bounds.width, bounds.height, colorName(fillColor));
-}
-@end    // OlateSpheroid
 
 
 int main(int argc, const char * argv[]) {
